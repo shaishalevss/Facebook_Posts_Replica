@@ -21,7 +21,7 @@ public class fbPostsAdapter extends ArrayAdapter {
     private List<facebookPost> fbPosts;
     private Context activity;
     private int layoutId;
-
+    public final Integer DEFAULT_TEXT_COLOR = 0xFF706F6F;
 
     public fbPostsAdapter(@NonNull Context context, int resource, @NonNull List objects) {
         super(context, resource, objects);
@@ -30,15 +30,13 @@ public class fbPostsAdapter extends ArrayAdapter {
         this.layoutId = resource;
     }
 
-
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(this.activity);
         convertView = inflater.inflate(this.layoutId, parent,false);
 
-
-        Boolean[] isClicked = new Boolean[7];
+        //attaching all the variables to their matching id's in-order to user them later
         TextView usernameTextView = convertView.findViewById(R.id.username);
         TextView dateTextView = convertView.findViewById(R.id.date);
         TextView likeRatioTextView = convertView.findViewById(R.id.likeRatio);
@@ -47,9 +45,9 @@ public class fbPostsAdapter extends ArrayAdapter {
         ImageView mainImageTextView = convertView.findViewById(R.id.mainImage);
         Button likeBtn = convertView.findViewById(R.id.likeBtn);
 
+        facebookPost currentPost = this.fbPosts.get(position);                                      //setting the current post, so every time we'll post/update the post we're currently looking at
 
-
-        facebookPost currentPost = this.fbPosts.get(position);
+        //Using the get methods we setted up in the "facebookPost" class, and setting the right data to the current post.
         usernameTextView.setText(currentPost.getUsername());
         dateTextView.setText(currentPost.getDate());
         likeRatioTextView.setText(currentPost.getLikeRatio());
@@ -59,17 +57,14 @@ public class fbPostsAdapter extends ArrayAdapter {
 
 
 
-
+        //lambda onclicklistener. every time we'll click on the like button it'll change the text color of the like button to blue, and if it already pressed it'll change it back to the original color.
         likeBtn.setOnClickListener(v -> {
-            if(likeBtn.getCurrentTextColor() == 0xFF706F6F) {
+            if(likeBtn.getCurrentTextColor() == DEFAULT_TEXT_COLOR) {
                 likeBtn.setTextColor(Color.BLUE);
-                isClicked[position] = true;
             } else {
-                likeBtn.setTextColor(0xFF706F6F);
-                isClicked[position] = false;
+                likeBtn.setTextColor(DEFAULT_TEXT_COLOR);
             }
         });
-
 
         return convertView;
     }

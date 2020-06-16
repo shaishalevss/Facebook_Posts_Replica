@@ -29,6 +29,8 @@ public class facebookPost {
         this.likeRatio = likeRatio;
     }
 
+    //Getters & Setters
+
     public int getProfilePicture() {
         return profilePicture;
     }
@@ -77,9 +79,4 @@ public class facebookPost {
         this.likeRatio = likeRatio;
     }
 
-    public void isClicked(){
-
-
-
-    }
 }
