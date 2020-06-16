@@ -1,7 +1,5 @@
 package com.example.facebook_mockup;
 
-import android.widget.Button;
-
 public class facebookPost {
     private int profilePicture;
     private String username;
