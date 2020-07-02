@@ -3,6 +3,7 @@ package com.example.facebook_mockup;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -40,10 +41,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //When the "Comments" button is click, this method display the comment section
-    public void displayComments(View view){
-        comments = findViewById(R.id.comments);
-        comments.setVisibility(View.VISIBLE);
-        comments.bringToFront();
+//    public void displayComments(View view){
+//        comments = findViewById(R.id.comments);
+//        comments.setVisibility(View.VISIBLE);
+//        comments.bringToFront();
+//    }
+
+    public void goToComments(View view){
+        Intent intent = new Intent(this, commentPage.class);
+        startActivity(intent);
     }
 
     //When the "<-" icon is click, this method hides the comment section
