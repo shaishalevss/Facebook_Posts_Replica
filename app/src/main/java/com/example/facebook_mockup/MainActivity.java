@@ -40,21 +40,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //When the "Comments" button is click, this method display the comment section
-//    public void displayComments(View view){
-//        comments = findViewById(R.id.comments);
-//        comments.setVisibility(View.VISIBLE);
-//        comments.bringToFront();
-//    }
-
+    //Go to the comments screen
     public void goToComments(View view){
         Intent intent = new Intent(this, commentPage.class);
         startActivity(intent);
     }
 
-    //When the "<-" icon is click, this method hides the comment section
-    public void hideComments(View view){
-        comments = findViewById(R.id.comments);
-        comments.setVisibility(View.GONE);
-    }
 }
